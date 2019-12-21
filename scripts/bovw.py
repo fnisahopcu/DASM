@@ -1,3 +1,8 @@
+''''
+The following code has been partially taken from :
+https://github.com/AybukeYALCINER/gabor_sift_bovw/blob/master/assignment1.py
+''''
+
 import numpy as np
 import cv2
 import os
@@ -25,6 +30,23 @@ test = load_images_from_folder("dataset/query") # take test images
 
 
 
+# Find the index of the closest central point to the each sift descriptor. 
+# Takes 2 parameters the first one is a sift descriptor and the second one is the array of central points in k means
+# Returns the index of the closest central point.  
+def find_index(image, center):
+    count = 0
+    ind = 0
+    for i in range(len(center)):
+        if(i == 0):
+           count = distance.euclidean(image, center[i]) 
+           #count = L1_dist(image, center[i])
+        else:
+            dist = distance.euclidean(image, center[i]) 
+            #dist = L1_dist(image, center[i])
+            if(dist < count):
+                ind = i
+                count = dist
+    return ind
 
 # Creates descriptors using sift
 # Takes one parameter that is images dictionary
@@ -45,15 +67,43 @@ def sift_features(images):
         sift_vectors[key] = features
     return [descriptor_list, sift_vectors]
 
-sifts = sift_features(images)
+# Creates descriptors using sift
+# Takes one parameter that is images dictionary
+# Return an array whose first index holds the decriptor_list without an order
+# And the second index holds the sift_vectors dictionary which holds the descriptors but this is seperated class by class
+def orb_features(images):
+    orb_vectors = {}
+    descriptor_list = []
+    orb = cv2.ORB_create()
+    for key,value in images.items():
+        features = []
+        for img in value:
+            kp, des = orb.detectAndCompute(img,None)
+
+
+            descriptor_list.extend(des)
+            features.append(des)
+        orb_vectors[key] = features
+    return [descriptor_list, orb_vectors]
+
+
+
+# sifts = sift_features(images)
+# # Takes the descriptor list which is unordered one
+# descriptor_list = sifts[0]
+# # Takes the sift features that is seperated class by class for train data
+# all_bovw_feature = sifts[1]
+# # Takes the sift features that is seperated class by class for test data
+# test_bovw_feature = sift_features(test)[1]
+
+
+orbs = orb_features(images)
 # Takes the descriptor list which is unordered one
-descriptor_list = sifts[0]
-# Takes the sift features that is seperated class by class for train data
-all_bovw_feature = sifts[1]
-# Takes the sift features that is seperated class by class for test data
-test_bovw_feature = sift_features(test)[1]
-
-
+descriptor_list = orbs[0]
+# Takes the orb features that is seperated class by class for train data
+all_bovw_feature = orbs[1]
+# Takes the orb features that is seperated class by class for test data
+test_bovw_feature = orb_features(test)[1]
 
 
 # A k-means clustering algorithm who takes 2 parameter which is number
@@ -67,24 +117,6 @@ def kmeans(k, descriptor_list):
 
 # Takes the central points which is visual words
 visual_words = kmeans(150, descriptor_list)
-
-
-
-
-
-def find_index(value, array):
-    try:
-        value_index = array.index(value)
-    except:
-        value_index = -1
-    return value_index
-
-
-
-
-
-
-
 
 
 # Takes 2 parameters. The first one is a dictionary that holds the descriptors that are separated class by class
