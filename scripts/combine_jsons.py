@@ -28,4 +28,4 @@ for json_file in os.listdir(jsons_path):
             continue
     input_file.close()
 
-soutput_file.close()
+output_file.close()
