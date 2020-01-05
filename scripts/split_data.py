@@ -54,16 +54,18 @@ if __name__ == "__main__":
 
     indcies = {
         "train" : [train_start, train_end],
-        "val"   : [val_start, val_end],
-        "test"  : [test_start, test_end]
+        "test"  : [test_start, test_end],
+        "val"   : [val_start, val_end]
     }
 
 
     # Suffle the data
     items.seek(0)
     lines =  items.readlines()
+    print(len(lines))
     random.shuffle(lines)
 
+      
     for data_type in indcies.keys():
         dirs = set()
 
@@ -73,7 +75,7 @@ if __name__ == "__main__":
         item_counter = 0
 
         for line in lines[data_type_start: data_type_end]:
-            label = line.split("\t")[1]
+            label = line.split("\t")[1].split("\n")[0]
             if label not in dirs:
                 os.mkdir(os.path.join("./", data_type, label))
                 dirs.add(label)
@@ -83,3 +85,4 @@ if __name__ == "__main__":
 
 
     items.close()
+    os.remove("items.txt")
