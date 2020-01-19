@@ -14,7 +14,11 @@ https://drive.google.com/file/d/13s3yG8LmumqZlxKNaWQNIKDNPfNE7b8f/view?usp=shari
 
 ## Paper
 
+TO be done
+
 ## Presentation
+
+TO be done
 
 ## Medium blogs for progress documentation
 
@@ -37,6 +41,8 @@ Since the repo is using SIFT and SURF descripotrs from openCV which are now not 
   . Python==3.6.0
   . opencv-python==3.4.2.16
   . opencv-contrib-python==3.4.2.16 
+  
+  TO be done
 
 # Authors
 malek-baba, ezgigungor, fnisahopcu
