@@ -14,11 +14,7 @@ https://drive.google.com/file/d/13s3yG8LmumqZlxKNaWQNIKDNPfNE7b8f/view?usp=shari
 
 ## Paper
 
-TO be done
-
-## Presentation
-
-TO be done
+https://drive.google.com/file/d/18ZpsVVO3_ORDphOhNusrYzQBbPfHxLdb/view?usp=sharing
 
 ## Medium blogs for progress documentation
 
