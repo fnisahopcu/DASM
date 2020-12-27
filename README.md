@@ -1,9 +1,9 @@
 # Damage Assessment System For Image Data (DASM)
 
-> This is the git repository for the undergradute Machine learning final project bbm406. Hacettepe University. Computer Engineering Department
+> This is the git repository for the undergradute Machine Learning final project BBM406. Hacettepe University. Computer Engineering Department
   
 ## Abstract
-Damage assessment after disasters is an important task for governments and organizations, howeverit takes a lot of time to evaluate the damage especially if the disaster affected a large area. In this project we propose a solution for this problem by employing image classification methods on damaged structures. We gathered data from the web and categorized them to build the training dataset. We use deep convolutional neural network(CNN), support vector machine(SVM) and bag-of-visual-words(BoVW) models. 
+Damage assessment after disasters is an important task for governments and organizations, however it takes a lot of time to evaluate the damage especially if the disaster affected a large area. In this project, we propose a solution for this problem by employing image classification methods on damaged structures. We gathered data from the web and categorized them to build the training dataset. We use deep convolutional neural network(CNN), support vector machine(SVM) and bag-of-visual-words(BoVW) models. 
 
 ## Datasets <Collected and labeled by hand>
 
@@ -32,13 +32,14 @@ part6: https://medium.com/bbm406f19/week-6-dasm-new-experiments-and-the-final-da
 
 ## Requirments
 
-Since the repo is using SIFT and SURF descripotrs from openCV which are now not supported, sepecific opencv, opencv-contrib and python version should be statisified.
+Since the repo is using SIFT and SURF descriptors from openCV which are now not supported, specific opencv, opencv-contrib and python version should be satisfied.
 
   . Python==3.6.0
-  . opencv-python==3.4.2.16
-  . opencv-contrib-python==3.4.2.16 
   
-  TO be done
+  . opencv-python==3.4.2.16
+  
+  . opencv-contrib-python==3.4.2.16 
+
 
 # Authors
 malek-baba, ezgigungor, fnisahopcu
